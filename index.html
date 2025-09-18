@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Rizwaan Zahid | Instructional Designer Portfolio</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://unpkg.com/basiclightbox@5.0.4/dist/basicLightbox.min.css" />
   <style>
     .gradient-bg {
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -13,11 +14,11 @@
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
     .card-hover:hover {
-      transform: translateY(5px);
+      transform: translateY(-5px);
       box-shadow: 0 20px 40px rgba(0,0,0,0.1);
     }
     .skill-tag {
-      background: linear-gradient(45deg, #4f46e5, #7caced);
+      background: linear-gradient(45deg, #4f46e5, #7c3aed);
     }
     .project-image {
       background: linear-gradient(45deg, #f3f4f6, #e5e7eb);
@@ -32,7 +33,7 @@
     <div class="max-w-6xl mx-auto px-6 text-center">
       <div class="w-24 h-24 bg-white rounded-full mx-auto mb-6 flex items-center justify-center">
         <svg class="w-12 h-12 text-indigo-600" fill="currentColor" viewBox="0 0 20 20">
-          <path d="M10 0C4.477 0 0 4.477 0 10c0 5.523 10 16 10 16s10-10.477 10-16c0-5.523-4.477-10-10-10z"></path>
+          <path d="M10 0C4.477 0 0 4.477 0 10c0 5.523 10 16 10 16s10-10.477 10-16c0-5.523-4.477-10-10-10z" />
         </svg>
       </div>
       <h1 class="text-5xl font-bold mb-4">Rizwaan Zahid</h1>
@@ -61,7 +62,7 @@
       <div class="bg-white rounded-2xl p-8 shadow-lg card-hover">
         <h2 class="text-3xl font-bold mb-6 flex items-center">
           <svg class="w-8 h-8 text-indigo-600 mr-3" fill="currentColor" viewBox="0 0 20 20">
-            <path d="M10 0C4.477 0 0 4.477 0 10c0 5.523 10 16 10 16s10-10.477 10-16c0-5.523-4.477-10-10-10z"></path>
+            <path d="M10 0C4.477 0 0 4.477 0 10c0 5.523 10 16 10 16s10-10.477 10-16c0-5.523-4.477-10-10-10z" />
           </svg>
           About Me
         </h2>
@@ -156,12 +157,12 @@
     <!-- Skills -->
     <section id="skills" class="mb-16">
       <div class="bg-white rounded-2xl p-8 shadow-lg">
-        <h2 class="text-3xl font-bold mb-6 text-center">Skills & Technologies</h2>
+        <h2 class="text-3xl font-bold mb-6 text-center text-gray-800">Skills & Technologies</h2>
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 text-center text-gray-700">
           <div class="bg-violet-100 p-3 rounded cursor-default">Brightspace & Moodle LMS</div>
           <div class="bg-purple-100 p-3 rounded cursor-default">Articulate 360: Rise & Storyline</div>
           <div class="bg-green-100 p-3 rounded cursor-default">Microsoft 365 Suite</div>
-          <div class="bg-yellow-100 p-3 rounded cursor-default">HTML5, CSS3, JavaScript</div>
+          <div class="bg-yellow-100 p-3 rounded cursor-default">HTML5, JavaScript</div>
           <div class="bg-teal-100 p-3 rounded cursor-default">AI Tools: ChatGPT, DeepL, WellSaid Labs</div>
           <div class="bg-pink-100 p-3 rounded cursor-default">Assessment & Data Analytics</div>
           <div class="bg-cyan-100 p-3 rounded cursor-default">Adult Learning & Accessibility</div>
@@ -173,12 +174,10 @@
     <!-- Contact -->
     <section id="contact" class="mb-16">
       <div class="bg-white rounded-2xl p-8 shadow-lg text-center">
-        <h2 class="text-3xl font-bold mb-6">Contact</h2>
-        <p class="mb-4 text-gray-700">
-          I am eager to contribute my instructional design expertise and collaborate on impactful learning projects.
-        </p>
-        <p><a href="mailto:rizwaanh123@example.com" class="text-indigo-600 hover:underline">rizwaanh123@example.com</a></p>
-        <p><a href="https://linkedin.com/in/rizwaan" class="text-indigo-600 hover:underline" target="_blank">linkedin.com/in/rizwaan</a></p>
+        <h2 class="text-3xl font-bold mb-6 text-gray-800">Contact</h2>
+        <p class="mb-4 text-gray-700">I am eager to contribute my instructional design expertise and collaborate on impactful learning projects.</p>
+        <p><a href="mailto:rizwaanzahid@gmail.com" class="text-indigo-600 hover:underline">rizwaanzahid@gmail.com</a></p>
+        <p><a href="https://www.linkedin.com/in/rizwaan-zahid-636255295/" class="text-indigo-600 hover:underline" target="_blank">linkedin.com/in/rizwaan-zahid-636255295/</a></p>
       </div>
     </section>
 
@@ -188,6 +187,7 @@
     <p class="text-center">&copy; 2024 Rizwaan Zahid. All rights reserved.</p>
   </footer>
 
+  <script src="https://unpkg.com/basiclightbox@5.0.4/dist/basicLightbox.min.js"></script>
   <script>
     // Smooth scrolling for section links
     document.querySelectorAll('nav a').forEach(link => {
@@ -203,6 +203,17 @@
       const nav = document.querySelector('nav');
       if(window.scrollY > 100) nav.classList.add('shadow-lg');
       else nav.classList.remove('shadow-lg');
+    });
+
+    // BasicLightbox click to fullscreen for all images
+    document.querySelectorAll('img').forEach(img => {
+      img.style.cursor = 'pointer';
+      img.addEventListener('click', () => {
+        const instance = basicLightbox.create(`
+          <img src="${img.src}" style="max-width: 90vw; max-height: 90vh;">
+        `)
+        instance.show()
+      });
     });
   </script>
 
